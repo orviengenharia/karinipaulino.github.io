@@ -14,7 +14,6 @@
       overflow-x: hidden;
     }
 
-    /* EFEITO LUZ */
     .cursor-light {
       position: fixed;
       width: 400px;
@@ -53,13 +52,9 @@
       justify-content: space-around;
       align-items: center;
       padding: 0 10%;
-      position: relative;
+      flex-wrap: wrap;
       z-index: 1;
-    }
-
-    .text {
-      max-width: 500px;
-      animation: fadeUp 1s ease forwards;
+      position: relative;
     }
 
     h1 {
@@ -78,11 +73,9 @@
       padding: 12px 24px;
       border: 1px solid #3b82f6;
       color: #3b82f6;
-      background: transparent;
-      cursor: pointer;
+      text-decoration: none;
       transition: 0.3s;
       display: inline-block;
-      text-decoration: none;
     }
 
     .btn:hover {
@@ -97,43 +90,30 @@
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #3b82f6;
-      transition: 0.5s;
-    }
-
-    .foto:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px #3b82f6;
     }
 
     .section {
       padding: 120px 20px;
       text-align: center;
-      position: relative;
-      z-index: 1;
     }
 
     .titulo {
       font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    .subtitulo {
-      color: #aaa;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
       padding: 0 10%;
     }
 
     .card {
       background: #020617;
-      padding: 25px;
+      padding: 20px;
       border-radius: 15px;
-      text-align: left;
+      text-align: center;
       border: 1px solid #111;
       transition: 0.4s;
       opacity: 0;
@@ -143,16 +123,19 @@
     .card.show {
       opacity: 1;
       transform: translateY(0);
-      transition: 0.8s;
     }
 
     .card:hover {
-      transform: translateY(-10px) scale(1.02);
+      transform: translateY(-10px);
       border: 1px solid #3b82f6;
-      box-shadow: 0 0 30px #3b82f655;
+      box-shadow: 0 0 25px #3b82f655;
     }
 
-    /* TIMELINE */
+    .card img {
+      width: 50px;
+      margin-bottom: 10px;
+    }
+
     .timeline {
       position: relative;
       max-width: 900px;
@@ -170,9 +153,9 @@
     }
 
     .job {
-      padding: 20px 30px;
-      position: relative;
       width: 50%;
+      padding: 20px;
+      position: relative;
       opacity: 0;
       transform: translateY(40px);
     }
@@ -180,22 +163,15 @@
     .job.show {
       opacity: 1;
       transform: translateY(0);
-      transition: 0.8s;
     }
 
-    .job.left {
-      left: 0;
-      text-align: right;
-    }
-
-    .job.right {
-      left: 50%;
-    }
+    .job.left { left: 0; text-align: right; }
+    .job.right { left: 50%; }
 
     .job::before {
       content: '';
       position: absolute;
-      top: 25px;
+      top: 20px;
       right: -6px;
       width: 12px;
       height: 12px;
@@ -203,36 +179,25 @@
       border-radius: 50%;
     }
 
-    .job.right::before {
-      left: -6px;
+    .job.right::before { left: -6px; }
+
+    .project-card {
+      background: #020617;
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid #111;
     }
 
-    /* RESPONSIVO */
-    @media (max-width: 768px) {
-      .timeline::after {
-        left: 10px;
-      }
-
-      .job {
-        width: 100%;
-        padding-left: 40px;
-        text-align: left;
-      }
-
-      .job.left, .job.right {
-        left: 0;
-      }
-
-      .job::before {
-        left: 0;
-      }
+    .project-card a {
+      color: #3b82f6;
+      display: block;
+      margin-top: 10px;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    @media(max-width:768px){
+      .job{width:100%; left:0; text-align:left;}
+      .timeline::after{left:10px;}
     }
-
   </style>
 </head>
 
@@ -249,32 +214,31 @@
 
 <!-- HOME -->
 <div id="home" class="container">
-  <div class="text">
+  <div>
     <h1>Karini Paulino</h1>
     <p>Projetista de Instalações Elétricas</p>
-    <p>Especialista em projetos elétricos com foco em qualidade, segurança e eficiência.</p>
+    <p>Especialista em projetos elétricos com foco em qualidade e segurança.</p>
 
-    <a href="curriculo.pdf" class="btn" download>
-      Baixar Currículo
-    </a>
+    <a href="curriculo.pdf" class="btn" download>Baixar Currículo</a>
   </div>
 
-  <img src="sua-foto.jpg" class="foto">
+  <img src="karini.jpg" class="foto">
 </div>
 
 <!-- SKILLS -->
 <div id="skills" class="section">
   <h2 class="titulo">Expertise Técnica</h2>
-  <p class="subtitulo">Ferramentas utilizadas nos projetos.</p>
 
   <div class="grid">
-    <div class="card">AutoCAD</div>
-    <div class="card">Revit</div>
-    <div class="card">AltoQI</div>
-    <div class="card">Pacote Office</div>
-    <div class="card">Navisworks</div>
-    <div class="card">Trimble</div>
-    <div class="card">Dalux</div>
+
+    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>AutoCAD</p></div>
+    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>Revit</p></div>
+    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>AltoQI</p></div>
+    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/732/732220.png"><p>Pacote Office</p></div>
+    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>Navisworks</p></div>
+    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>Trimble</p></div>
+    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>Dalux</p></div>
+
   </div>
 </div>
 
@@ -283,33 +247,43 @@
   <h2 class="titulo">Experiência</h2>
 
   <div class="timeline">
+
     <div class="job left">
-      <h3>Hoyt Engineering</h3>
+      <h3>Hoyt</h3>
       <p>2023 - Atual</p>
     </div>
 
     <div class="job right">
-      <h3>RGK Engenharia</h3>
+      <h3>RGK</h3>
       <p>2022 - 2024</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROJETOS -->
+<div id="projects" class="section">
+  <h2 class="titulo">Projetos</h2>
+
+  <div class="grid">
+    <div class="project-card">
+      <h3>Projeto 1</h3>
+      <a href="projeto1.pdf">Ver PDF</a>
     </div>
   </div>
 </div>
 
 <script>
-/* LUZ SEGUINDO MOUSE */
 const light = document.getElementById("light");
-document.addEventListener("mousemove", e => {
-  light.style.left = e.clientX + "px";
-  light.style.top = e.clientY + "px";
+document.addEventListener("mousemove", e=>{
+  light.style.left = e.clientX+"px";
+  light.style.top = e.clientY+"px";
 });
 
-/* ANIMAÇÃO */
-const elements = document.querySelectorAll(".card, .job");
-
-window.addEventListener("scroll", () => {
-  elements.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 50) {
+const els=document.querySelectorAll(".card,.job");
+window.addEventListener("scroll",()=>{
+  els.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-50){
       el.classList.add("show");
     }
   });
