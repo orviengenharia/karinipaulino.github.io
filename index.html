@@ -1,204 +1,251 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Karini Paulino</title>
+<meta charset="UTF-8">
+<title>Karini Paulino</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      color: white;
-      font-family: Arial, sans-serif;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: white;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
-    .cursor-light {
-      position: fixed;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(59,130,246,0.15), transparent 70%);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-    }
+/* LUZ */
+.cursor-light {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59,130,246,0.15), transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
 
-    header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      background: rgba(0,0,0,0.6);
-      padding: 15px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-    }
+/* MENU */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(0,0,0,0.6);
+  padding: 15px 60px;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
 
-    header a {
-      color: #aaa;
-      margin: 0 15px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+header a {
+  color: #ddd; /* mais claro pra aparecer */
+  margin-left: 25px;
+  text-decoration: none;
+  font-size: 15px;
+}
 
-    header a:hover {
-      color: #3b82f6;
-    }
+header a:hover {
+  color: #3b82f6;
+}
 
-    .container {
-      height: 100vh;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 0 10%;
-      flex-wrap: wrap;
-      z-index: 1;
-      position: relative;
-    }
+/* HOME */
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 120px 10% 0; /* 👈 ISSO AQUI resolve */
+}
 
-    h1 {
-      font-size: 60px;
-      margin: 0;
-    }
+h1 {
+  font-size: 60px;
+  margin: 0;
+}
 
-    p {
-      color: #aaa;
-      font-size: 18px;
-      line-height: 1.6;
-    }
+.frase {
+  color: #3b82f6;
+  font-weight: 600;
+  font-size: 26px;
+  margin: 10px 0 20px;
+}
 
-    .btn {
-      margin-top: 15px;
-      padding: 12px 24px;
-      border: 1px solid #3b82f6;
-      color: #3b82f6;
-      text-decoration: none;
-      transition: 0.3s;
-      display: inline-block;
-    }
+.descricao {
+  max-width: 500px;
+  font-size: 16px;
+}
 
-    .btn:hover {
-      background: #3b82f6;
-      color: black;
-      box-shadow: 0 0 20px #3b82f6;
-    }
+p {
+  color: #aaa;
+  line-height: 1.6;
+}
 
-    .foto {
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #3b82f6;
-    }
+.btn {
+  padding: 12px 24px;
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+}
 
-    .section {
-      padding: 120px 20px;
-      text-align: center;
-    }
+.btn:hover {
+  background: #3b82f6;
+  color: black;
+}
 
-    .titulo {
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
+.foto {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #3b82f6;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 0 10%;
-    }
+/* SEÇÕES */
+.section {
+  padding: 120px 20px;
+  text-align: center;
+}
 
-    .card {
-      background: #020617;
-      padding: 20px;
-      border-radius: 15px;
-      text-align: center;
-      border: 1px solid #111;
-      transition: 0.4s;
-      opacity: 0;
-      transform: translateY(40px);
-    }
+.titulo {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
 
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  padding: 0 10%;
+}
 
-    .card:hover {
-      transform: translateY(-10px);
-      border: 1px solid #3b82f6;
-      box-shadow: 0 0 25px #3b82f655;
-    }
+.card {
+  background: #020617;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #111;
+  text-align: center;
+  transition: 0.4s;
+  opacity: 0;
+  transform: translateY(40px);
+}
 
-    .card img {
-      width: 50px;
-      margin-bottom: 10px;
-    }
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .timeline {
-      position: relative;
-      max-width: 900px;
-      margin: auto;
-    }
+.card:hover {
+  transform: translateY(-10px);
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 25px #3b82f655;
+}
 
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 2px;
-      background: #3b82f6;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-    }
+.card img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
 
-    .job {
-      width: 50%;
-      padding: 20px;
-      position: relative;
-      opacity: 0;
-      transform: translateY(40px);
-    }
+/* TIMELINE */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 0;
+}
 
-    .job.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: #3b82f6;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-    .job.left { left: 0; text-align: right; }
-    .job.right { left: 50%; }
+.job {
+  padding: 20px 40px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
 
-    .job::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      right: -6px;
-      width: 12px;
-      height: 12px;
-      background: #3b82f6;
-      border-radius: 50%;
-    }
+.job.left {
+  left: 0;
+  text-align: right;
+}
 
-    .job.right::before { left: -6px; }
+.job.right {
+  left: 50%;
+  text-align: left;
+}
 
-    .project-card {
-      background: #020617;
-      padding: 20px;
-      border-radius: 15px;
-      border: 1px solid #111;
-    }
+.job .content {
+  background: #020617;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #111;
+}
 
-    .project-card a {
-      color: #3b82f6;
-      display: block;
-      margin-top: 10px;
-    }
+.job span {
+  display: block;
+  color: #3b82f6;
+  margin-bottom: 10px;
+}
 
-    @media(max-width:768px){
-      .job{width:100%; left:0; text-align:left;}
-      .timeline::after{left:10px;}
-    }
-  </style>
+.job::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  width: 12px;
+  height: 12px;
+  background: #3b82f6;
+  border-radius: 50%;
+}
+
+.job.left::before { right: -6px; }
+.job.right::before { left: -6px; }
+
+/* CONTATO */
+.contact-box a {
+  display: block;
+  color: #3b82f6;
+  margin: 10px 0;
+  text-decoration: none;
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+  .job { width:100%; left:0; text-align:left; }
+  .timeline::after { left:10px; }
+  .job::before { left:0; }
+}
+.project-card {
+  background: #020617;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #111;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 20px #3b82f655;
+  transform: translateY(-5px);
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #3b82f6;
+  text-decoration: none;
+}
+</style>
 </head>
 
 <body>
@@ -206,89 +253,196 @@
 <div class="cursor-light" id="light"></div>
 
 <header>
-  <a href="#home">Início</a>
-  <a href="#skills">Habilidades</a>
-  <a href="#experience">Experiência</a>
-  <a href="#projects">Projetos</a>
+<a href="#home">Início</a>
+<a href="#skills">Habilidades</a>
+<a href="#experience">Experiência</a>
+<a href="#projects">Projetos</a>
+<a href="#contact">Contato</a>
 </header>
 
 <!-- HOME -->
 <div id="home" class="container">
-  <div>
-    <h1>Karini Paulino</h1>
-    <p>Projetista de Instalações Elétricas</p>
-    <p>Especialista em projetos elétricos com foco em qualidade e segurança.</p>
+<div>
+<h1>Karini Paulino</h1>
 
-    <a href="curriculo.pdf" class="btn" download>Baixar Currículo</a>
-  </div>
+<p class="frase">
+Projetos elétricos pensados com estratégia, 
+qualidade e segurança.
+</p>
 
-  <img src="karini.jpg" class="foto">
+<p class="descricao">
+Profissional especializada em projetos de instalações elétricas com foco em metodologia BIM, atuando no desenvolvimento, dimensionamento e compatibilização de sistemas elétricos para empreendimentos de médio e alto padrão. Experiência consolidada com AutoCAD, Revit e AltoQi Builder, aliando precisão técnica, organização de processos e qualidade na entrega de projetos.
+</p>
+
+<p>Projetista de Instalações Elétricas</p>
+
+<a href="curriculo.pdf" class="btn">Baixar Currículo</a>
+</div>
+
+<img src="karini.jpg" class="foto">
 </div>
 
 <!-- SKILLS -->
 <div id="skills" class="section">
-  <h2 class="titulo">Expertise Técnica</h2>
+<h2 class="titulo">Expertise Técnica</h2>
 
-  <div class="grid">
-
-    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>AutoCAD</p></div>
-    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>Revit</p></div>
-    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>AltoQI</p></div>
-    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/732/732220.png"><p>Pacote Office</p></div>
-    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>Navisworks</p></div>
-    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>Trimble</p></div>
-    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"><p>Dalux</p></div>
-
-  </div>
+<div class="grid">
+<div class="card"><img src="https://www.clipartmax.com/png/middle/38-381434_autocad-logo-%5Bautodesk%5D-vector-eps-free-download-logo-autocad-logo.png"><p>AutoCAD</p></div>
+<div class="card"><img src="https://w7.pngwing.com/pngs/161/856/png-transparent-autodesk-revit-architecture-building-information-modeling-computer-software-design-angle-text-logo-thumbnail.png"><p>Revit</p></div>
+<div class="card"><img src="https://dutotec.com.br/wp-content/uploads/2024/08/Logo-builder.png"><p>AltoQI Builder</p></div>
+<div class="card"><img src="https://png.pngtree.com/element_our/sm/20180627/sm_5b33460eda712.jpg"><p>Pacote Office</p></div>
+<div class="card"><img src="https://img.icons8.com/color/512/navisworks.png"><p>Navisworks</p></div>
+<div class="card"><img src="https://companieslogo.com/img/orig/TRMB-f6434f42.png?t=1720244494"><p>Trimble</p></div>
+<div class="card"><img src="https://store-images.s-microsoft.com/image/apps.61372.14405977853537239.468ce0b5-e553-48c0-b032-d0dbd5ab97b6.3ca3b2d5-05cd-4b3a-a39a-bc3f52d2b654"><p>Dalux</p></div>
+</div>
+<div class="card"><p>NBR 5410</p></div>
+<div class="card"><p>NBR 5419</p></div>
+<div class="card"><p>NBR 14039</p></div>
+<div class="card"><p>NBR 5413</p></div>
 </div>
 
 <!-- EXPERIÊNCIA -->
 <div id="experience" class="section">
-  <h2 class="titulo">Experiência</h2>
+<h2 class="titulo">Experiência Profissional</h2>
 
-  <div class="timeline">
+<div class="timeline">
 
-    <div class="job left">
-      <h3>Hoyt</h3>
-      <p>2023 - Atual</p>
-    </div>
+  <div class="job right">
+<div class="content">
+<h3>Formato Engenharia</h3>
+<span>2025 - Atual</span>
+<p>Desenvolvimento de projetos de instalações elétricas para edificações residenciais e prediais de grande porte, atendendo grandes construtoras. Atuação com modelagem BIM no Revit e elaboração de plantas técnicas em AutoCAD, incluindo modelagem 3D dos sistemas elétricos. Responsável pelo detalhamento de entrada de energia conforme padrões da concessionária (Enel), dimensionamento de infraestrutura elétrica, quadros e circuitos. Elaboração de memoriais descritivos e quantitativos, além de participação na compatibilização de projetos e análise de interferências.</p>
+</div>
+</div>
 
-    <div class="job right">
-      <h3>RGK</h3>
-      <p>2022 - 2024</p>
-    </div>
+<div class="job left">
+<div class="content">
+<h3>Hoyt Engenharia Integrada</h3>
+<span>2023 - 2025</span>
+<p>Desenvolvimento de projetos elétricos para empreendimentos residenciais de médio e alto padrão utilizando metodologia BIM.
+Modelagem e compatibilização de sistemas elétricos com uso de AltoQi Builder e Revit, garantindo integração entre disciplinas.
+Dimensionamento de infraestrutura elétrica, quadros, circuitos e alimentadores conforme normas técnicas.
+Elaboração de projetos para aprovação (entrada de energia, cálculo de demanda e carga instalada).
+Coordenação e análise de interferências (clash detection) com ferramentas como Navisworks, Dalux e Trimble.
+Revisão técnica de projetos, assegurando qualidade, padronização e conformidade normativa.
+Suporte técnico e coordenação de equipe remota, contribuindo para melhoria de processos e entregas.</p>
+</div>
+</div>
 
-  </div>
+<div class="job right">
+<div class="content">
+<h3>RGK Engenharia</h3>
+<span>2022 - 2024</span>
+<p>Desenvolvimento de projetos elétricos residenciais, comerciais e industriais em BIM.
+Criação de plantas técnicas e layouts elétricos em AutoCAD.
+Dimensionamento de sistemas elétricos e infraestrutura de cabeamento estruturado.
+Elaboração de memoriais descritivos e quantitativos para execução de obras.</p>
+</div>
+</div>
+
+<div class="job left">
+<div class="content">
+<h3>AKMX Engenharia</h3>
+<span>2019 - 2022</span>
+<p>Desenvolvimento de projetos de instalações elétricas prediais, comerciais e
+industriais em planta baixa no software AutoCAD e Revit, elaboração de diagramas
+elétricos, memoriais de cálculo e descritivo; dimensionamento de infraestrutura de
+cabeamento estruturado, de rede e telefonia e detalhes de Byface do rack. Vistorias
+técnicas para estudo e análise para atender as necessidades do escopo do projeto.</p>
+</div>
+</div>
+
+</div>
 </div>
 
 <!-- PROJETOS -->
 <div id="projects" class="section">
-  <h2 class="titulo">Projetos</h2>
+<h2 class="titulo">Projetos</h2>
+
 
   <div class="grid">
+
     <div class="project-card">
-      <h3>Projeto 1</h3>
-      <a href="projeto1.pdf">Ver PDF</a>
+      <h3>Elétrica</h3>
+      <a href="#">Ver projetos</a>
     </div>
+
+    <div class="project-card">
+      <h3>Telecom</h3>
+      <a href="#">Ver projetos</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Preventivo Elétrico</h3>
+      <a href="#">Ver projetos</a>
+    </div>
+
+    <div class="project-card">
+      <h3>SPDA</h3>
+      <a href="#">Ver projetos</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Modelo 3D</h3>
+      <a href="#">Ver projetos</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Detalhes</h3>
+      <a href="#">Ver projetos</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Diagramas</h3>
+      <a href="#">Ver projetos</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Tabelas de Cargas</h3>
+      <a href="#">Ver projetos</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Memoriais</h3>
+      <a href="#">Ver projetos</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Entrada de Energia</h3>
+      <a href="#">Ver projetos</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Laudos Técnicos</h3>
+      <a href="#">Ver projetos</a>
+    </div>
+
   </div>
+</div>
+</div>
+</div>
+
+<!-- CONTATO -->
+<div id="contact" class="section">
+<h2 class="titulo">Contato</h2>
+
+<div class="contact-box">
+<a href="#">LinkedIn</a>
+<a href="mailto:seuemail@email.com">Email: karini.projetos@gmail.com</a>
+<a href="#">WhatsApp</a>
+</div>
 </div>
 
 <script>
 const light = document.getElementById("light");
 document.addEventListener("mousemove", e=>{
-  light.style.left = e.clientX+"px";
-  light.style.top = e.clientY+"px";
-});
-
-const els=document.querySelectorAll(".card,.job");
-window.addEventListener("scroll",()=>{
-  els.forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight-50){
-      el.classList.add("show");
-    }
-  });
+  light.style.left = e.clientX + "px";
+  light.style.top = e.clientY + "px";
 });
 </script>
 
 </body>
+<script>
+document.querySelectorAll(".card").forEach(el => el.classList.add("show"));
+</script>
 </html>
