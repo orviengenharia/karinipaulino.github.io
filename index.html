@@ -1,52 +1,158 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Karini Paulino | Engenharia Elétrica</title>
-  <style>
-    body { font-family: Arial; margin: 40px; background: #f5f5f5; }
-    h1 { color: #222; }
-    .box { background: white; padding: 20px; border-radius: 10px; }
-    .lang { margin-bottom: 20px; }
-    button { margin-right: 10px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karini Paulino | Engenharia Elétrica</title>
+
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+header {
+  background: #020617;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  background: #38bdf8;
+  border: none;
+  padding: 8px 12px;
+  margin-left: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.section {
+  margin-top: 50px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+  margin-top: 50px;
+}
+</style>
 </head>
 
 <body>
 
-<div class="lang">
-  <button onclick="setLang('pt')">🇧🇷 Português</button>
-  <button onclick="setLang('en')">🇺🇸 English</button>
+<header>
+  <strong>Karini Paulino</strong>
+  <div>
+    <button onclick="setLang('pt')">PT</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- PORTUGUÊS -->
+<div id="pt">
+  <h1>Engenharia Elétrica</h1>
+  <p>Projetista de instalações elétricas com experiência em BIM e projetos residenciais, comerciais e industriais.</p>
+
+  <div class="section">
+    <h2>💼 Experiência</h2>
+    <div class="card">
+      <strong>Hoyt Engenharia</strong><br>
+      Projetos BIM, dimensionamento e compatibilização
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>⚙️ Habilidades</h2>
+    <div class="card">
+      AutoCAD • Revit • AltoQi Builder • BIM • Excel
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📂 Projetos</h2>
+    <div class="card">
+      Projeto elétrico residencial completo
+    </div>
+    <div class="card">
+      Compatibilização BIM (clash detection)
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📞 Contato</h2>
+    <div class="card">
+      karini.paulino@hotmail.com
+    </div>
+  </div>
 </div>
 
-<div id="pt" class="box">
-  <h1>Karini Paulino</h1>
-  <h2>Engenharia Elétrica</h2>
-  <p>Projetista de instalações elétricas com experiência em BIM.</p>
+<!-- ENGLISH -->
+<div id="en" style="display:none;">
+  <h1>Electrical Engineering</h1>
+  <p>Electrical installation designer with experience in BIM and building projects.</p>
 
-  <h3>Projetos</h3>
-  <ul>
-    <li>Projeto elétrico residencial</li>
-    <li>Compatibilização BIM</li>
-  </ul>
+  <div class="section">
+    <h2>💼 Experience</h2>
+    <div class="card">
+      Hoyt Engineering<br>
+      BIM projects, electrical sizing and coordination
+    </div>
+  </div>
 
-  <h3>Contato</h3>
-  <p>Email: karini.paulino@hotmail.com</p>
+  <div class="section">
+    <h2>⚙️ Skills</h2>
+    <div class="card">
+      AutoCAD • Revit • AltoQi Builder • BIM • Excel
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📂 Projects</h2>
+    <div class="card">
+      Full residential electrical project
+    </div>
+    <div class="card">
+      BIM coordination (clash detection)
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📞 Contact</h2>
+    <div class="card">
+      karini.paulino@hotmail.com
+    </div>
+  </div>
 </div>
 
-<div id="en" class="box" style="display:none;">
-  <h1>Karini Paulino</h1>
-  <h2>Electrical Engineering</h2>
-  <p>Electrical installation designer with BIM experience.</p>
+</div>
 
-  <h3>Projects</h3>
-  <ul>
-    <li>Residential electrical project</li>
-    <li>BIM coordination</li>
-  </ul>
-
-  <h3>Contact</h3>
-  <p>Email: karini.paulino@hotmail.com</p>
+<div class="footer">
+  © 2026 Karini Paulino
 </div>
 
 <script>
